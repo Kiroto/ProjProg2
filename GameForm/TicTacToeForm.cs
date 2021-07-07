@@ -6,16 +6,19 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Model;
+using System.Media;
 
 namespace GameForm
 {
     public partial class TicTacToeForm : Form
     {
         TicTacToeGame ticTacToeGame = new TicTacToeGame();
+        SoundPlayer sp = new SoundPlayer(@"C:\Users\kirot\Desktop\Music\Space.wav");
 
         public TicTacToeForm()
         {
             InitializeComponent();
+            sp.PlayLooping();
         }
 
         private void refreshPlayfield()
