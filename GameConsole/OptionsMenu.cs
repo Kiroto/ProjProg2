@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Model;
+using static SOLID.Helpers.Helpers;
 
 namespace GameConsole
 {
@@ -17,11 +18,11 @@ namespace GameConsole
         public ConsoleColor selectedColor = ConsoleColor.White;
         public ConsoleColor selectedBackground = ConsoleColor.Blue;
 
-        public OptionsMenu(String[] options, int positionX, int positionY)
+        public OptionsMenu(String[] options, BoxBounds bb)
         {
             this.options = options;
             setOptionsMaxLength();
-            bounds = new BoxBounds(positionX, positionX + biggestOption, positionY, options.Length);
+            bounds = bb;
             Draw();
         }
 
@@ -47,30 +48,30 @@ namespace GameConsole
         {
             for(int i = 0; i < options.Length; i++)
             {
-                Console.SetCursorPosition(bounds.A.x, bounds.A.y + i);
+                int width = bounds.Width();
+                BoxBounds lineBounds = new BoxBounds(width, 1);
+                lineBounds.SetSource(bounds.A);
+                lineBounds.Move(new Vector(0, i));
+                ConsoleColor cuf;
+                ConsoleColor cub;
                 if (i == cursor)
                 {
-                    Console.BackgroundColor = selectedBackground;
-                    Console.ForegroundColor = selectedColor;
+                    cub = selectedBackground;
+                    cuf = selectedColor;
                 }
                 else
                 {
-                    Console.BackgroundColor = backgroundColor;
-                    Console.ForegroundColor = foregroundColor;
+                    cub = backgroundColor;
+                    cuf = foregroundColor;
                 }
-                Console.Write(options[i].PadRight(bounds.Width()));
+                String line = options[i].PadSides(width);
+                ConsoleHelpers.writeText(line, lineBounds, cuf, cub, ConsoleHelpers.Alignment.Center);
             }
         }
 
         public void Dispose()
         {
-            for (int i = 0; i < options.Length; i++)
-            {
-                Console.SetCursorPosition(bounds.A.x, bounds.A.y + i);
-                Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.Black;
-                Console.Write("".PadRight(biggestOption));
-            }
+            ConsoleHelpers.clearBox(bounds);
         }
     }
 }

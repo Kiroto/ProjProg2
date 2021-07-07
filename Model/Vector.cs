@@ -4,12 +4,12 @@ using System.Text;
 
 namespace Model
 {
-    public class Point
+    public class Vector
     {
         public int x;
         public int y;
 
-        public Point(int x, int y)
+        public Vector(int x, int y)
         {
             this.x = x;
             this.y = y;

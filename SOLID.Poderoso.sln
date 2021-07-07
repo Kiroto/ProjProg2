@@ -15,13 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Test", "Unit Test", "{BBEF3241-2C0E-424F-A838-860317DD239D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOLID.Helpers", "..\Helpers\SOLID.Helpers\SOLID.Helpers.csproj", "{025C1803-5775-4540-9A1C-74C2D7E7F3CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpers", "..\Helpers\SOLID.Helpers\Helpers.csproj", "{025C1803-5775-4540-9A1C-74C2D7E7F3CE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{2FFDAAFF-9577-4ABE-8B3F-5FFD6CAC67F2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameForm", "GameForm\GameForm.csproj", "{C8892FB1-0D25-42C4-99AF-8D4133B980E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameConsole", "GameConsole\GameConsole.csproj", "{1226C0A8-7BC8-461D-B24F-CC7FDC9E85B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameConsole", "GameConsole\GameConsole.csproj", "{1226C0A8-7BC8-461D-B24F-CC7FDC9E85B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
