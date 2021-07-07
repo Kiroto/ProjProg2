@@ -64,7 +64,7 @@ namespace GameConsole
         static void Main(string[] args)
         {
             writeText("What Game would you like to play?", bgColor: ConsoleColor.DarkYellow, al: Alignment.Center);
-            String[] options = { "Tic-Tac-Toe", "Three And Two", "Exit" };
+            String[] options = { "Tic-Tac-Toe", "Three And Two", "Options", "Exit" };
             int selection = optionsWindow(options, ConsoleHelpers.windowBounds.MiddlePoint().x - 5);
         }
 
