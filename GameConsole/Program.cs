@@ -17,7 +17,10 @@ namespace GameConsole
             BoxBounds optionsBounds = new BoxBounds(20, options.Length);
             ConsoleHelpers.centerBoxBound(optionsBounds);
 
-            int selection = ConsoleHelpers.optionsWindow(options, optionsBounds);
+            switch(ConsoleHelpers.optionsWindow(options, optionsBounds))
+            {
+
+            }
         }
     }
 }
