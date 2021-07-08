@@ -8,7 +8,7 @@ namespace GameConsole
 {
     class ConsoleHelpers
     {
-        public static BoxBounds windowBounds = new BoxBounds(0, Console.WindowWidth, 0, Console.WindowHeight);
+        public static BoxBounds windowBounds = new BoxBounds(Console.WindowWidth, Console.WindowHeight);
 
         static readonly ConsoleKey OK = ConsoleKey.Enter;
         static readonly ConsoleKey UP = ConsoleKey.UpArrow;
@@ -124,8 +124,8 @@ namespace GameConsole
             for (int i = 0; i < bb.Height(); i++)
             {
                 Console.SetCursorPosition(bb.A.x, bb.A.y + i);
-                Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.Black;
+                Console.BackgroundColor = defaultBackground;
+                Console.ForegroundColor = defaultForeground;
                 Console.Write("".PadRight(bb.Width()));
             }
            

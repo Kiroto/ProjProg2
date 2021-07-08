@@ -26,7 +26,7 @@ namespace GameForm
             Button[] buttons = { button1, button2, button3, button4, button5, button6, button7, button8, button9 };
             for (int i = 0; i < buttons.Length; i++)
             {
-                buttons[i].Text = ticTacToeGame.getGamespace(i%3, i/3).ToString();
+                buttons[i].Text = ticTacToeGame.getGamespace(i % 3, i / 3).ToString();
             }
             label2.Text = ticTacToeGame.getCurrentPlayerSymbol().ToString().ToUpper();
             int plrWin = ticTacToeGame.didPlayerWin();

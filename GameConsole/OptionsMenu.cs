@@ -10,18 +10,16 @@ namespace GameConsole
     {
         BoxBounds bounds;
         String[] options;
-        int biggestOption;
         public int cursor = 0;
 
         public ConsoleColor backgroundColor = ConsoleColor.DarkGray;
         public ConsoleColor foregroundColor = ConsoleColor.White;
+        public ConsoleColor selectedBackground = ConsoleColor.DarkBlue;
         public ConsoleColor selectedColor = ConsoleColor.White;
-        public ConsoleColor selectedBackground = ConsoleColor.Blue;
 
         public OptionsMenu(String[] options, BoxBounds bb)
         {
             this.options = options;
-            setOptionsMaxLength();
             bounds = bb;
             Draw();
         }
@@ -36,19 +34,11 @@ namespace GameConsole
             cursor = (cursor + 1) % options.Length;
         }
 
-        void setOptionsMaxLength()
-        {
-            foreach(String opt in options)
-            {
-                biggestOption = opt.Length > biggestOption ? opt.Length : biggestOption;
-            }
-        }
-
         public void Draw()
         {
+            int width = bounds.Width();
             for(int i = 0; i < options.Length; i++)
             {
-                int width = bounds.Width();
                 BoxBounds lineBounds = new BoxBounds(width, 1);
                 lineBounds.SetSource(bounds.A);
                 lineBounds.Move(new Vector(0, i));

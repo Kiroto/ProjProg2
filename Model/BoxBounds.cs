@@ -15,6 +15,12 @@ namespace Model
             B = new Vector(maxX, maxY);
         }
 
+        public BoxBounds(Vector pointA, Vector pointB)
+        {
+            A = pointA;
+            B = pointB;
+        }
+
         public BoxBounds(int width, int height)
         {
             A = new Vector(0, 0);
