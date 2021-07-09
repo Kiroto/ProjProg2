@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Model;
-using static SOLID.Helpers.Helpers;
+using Helpers;
 
 namespace GameConsole
 {
