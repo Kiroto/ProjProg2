@@ -1,5 +1,6 @@
 ﻿using System;
 using Model;
+using FlappyBird;
 
 namespace GameConsole
 {
@@ -12,7 +13,7 @@ namespace GameConsole
             ConsoleHelpers.centerBoxBoundH(textBounds);
             ConsoleHelpers.writeText(welcomeText, textBounds, bgColor: ConsoleColor.DarkYellow, al: ConsoleHelpers.Alignment.Center);
 
-            String[] options = { "Tic-Tac-Toe", "Worm", "Three And Two", "Options", "Exit" };
+            String[] options = { "Flappy Bird", "Options", "Exit" };
 
             BoxBounds optionsBounds = new BoxBounds(20, options.Length);
             ConsoleHelpers.centerBoxBound(optionsBounds);
@@ -20,7 +21,12 @@ namespace GameConsole
             switch(ConsoleHelpers.optionsWindow(options, optionsBounds))
             {
                 case 0:
-                    TicTacToeConsole.main();
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.Title = "Console Flappy Bird C#";
+                    Console.CursorVisible = false;
+                    Flappy flappy = new Flappy(75, 20);
+                    flappy.Run();
+                    Console.ReadKey();
                     break;
             }
         }
