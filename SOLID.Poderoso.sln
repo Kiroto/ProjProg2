@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helpers", "Helpers", "{A31D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpers", "Helpers\Helpers.csproj", "{3E5094B7-7BFA-4E6C-AAAC-C0CDFFDD07BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlappyBird", "FlappyBird\FlappyBird.csproj", "{B82067AE-9A2B-4997-A7B8-50E317D5CA47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{3E5094B7-7BFA-4E6C-AAAC-C0CDFFDD07BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E5094B7-7BFA-4E6C-AAAC-C0CDFFDD07BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E5094B7-7BFA-4E6C-AAAC-C0CDFFDD07BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B82067AE-9A2B-4997-A7B8-50E317D5CA47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B82067AE-9A2B-4997-A7B8-50E317D5CA47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B82067AE-9A2B-4997-A7B8-50E317D5CA47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B82067AE-9A2B-4997-A7B8-50E317D5CA47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +60,7 @@ Global
 		{C8892FB1-0D25-42C4-99AF-8D4133B980E9} = {341BF0FB-EAD5-4DED-9AB1-E290BDF8D68C}
 		{1226C0A8-7BC8-461D-B24F-CC7FDC9E85B1} = {341BF0FB-EAD5-4DED-9AB1-E290BDF8D68C}
 		{3E5094B7-7BFA-4E6C-AAAC-C0CDFFDD07BB} = {A31D4F14-63AA-4801-AF8E-C2B97E5DF8A7}
+		{B82067AE-9A2B-4997-A7B8-50E317D5CA47} = {341BF0FB-EAD5-4DED-9AB1-E290BDF8D68C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5A183141-FC37-4F32-93B4-BE00463B38F3}
