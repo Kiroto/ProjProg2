@@ -30,7 +30,7 @@ namespace GameConsole
                     Console.ReadKey();
                     break;
                 case 1:
-                    Console.BackgroundColor = ConsoleColor.Black;q
+                    Console.BackgroundColor = ConsoleColor.Black;
                     Snake snake = new Snake();
                     while (true)
                     {
