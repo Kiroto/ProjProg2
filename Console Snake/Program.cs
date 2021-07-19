@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace Console_Snake
 {
-      public class Snake
+    public class Snake
     {
         int Height = 20;
         int Width = 30;
@@ -79,7 +79,7 @@ namespace Console_Snake
                     fruitY = rnd.Next(2, (Height - 2));
                 }
             }
-            for (int i  = parts;i > 1; i--)
+            for (int i = parts; i > 1; i--)
             {
                 X[i - 1] = X[i - 2];
                 Y[i - 1] = Y[i - 2];
@@ -99,7 +99,7 @@ namespace Console_Snake
                     X[0]--;
                     break;
             }
-            for (int i = 0; i <=(parts -1); i++)
+            for (int i = 0; i <= (parts - 1); i++)
             {
                 WritePoint(X[i], Y[i]);
                 WritePoint(fruitX, fruitY);
