@@ -1,6 +1,7 @@
 ﻿using System;
 using Model;
 using FlappyBird;
+using Console_Snake;
 
 namespace GameConsole
 {
@@ -13,7 +14,7 @@ namespace GameConsole
             ConsoleHelpers.centerBoxBoundH(textBounds);
             ConsoleHelpers.writeText(welcomeText, textBounds, bgColor: ConsoleColor.DarkYellow, al: ConsoleHelpers.Alignment.Center);
 
-            String[] options = { "Flappy Bird", "Options", "Exit" };
+            String[] options = { "Flappy Bird", "Snake","Options", "Exit" };
 
             BoxBounds optionsBounds = new BoxBounds(20, options.Length);
             ConsoleHelpers.centerBoxBound(optionsBounds);
@@ -28,6 +29,18 @@ namespace GameConsole
                     flappy.Run();
                     Console.ReadKey();
                     break;
+                case 1:
+                    Console.BackgroundColor = ConsoleColor.Black;q
+                    Snake snake = new Snake();
+                    while (true)
+                    {
+                        snake.WriteBoard();
+                        snake.Input();
+                        snake.Logic();
+                    }
+                    Console.ReadKey();
+
+
             }
         }
     }
