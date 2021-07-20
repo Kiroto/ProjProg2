@@ -107,7 +107,7 @@ namespace GameConsole
             ConsoleKey keyPressed = ConsoleKey.NoName;
             while (keyPressed != OK)
             {
-                keyPressed = Console.ReadKey().Key;
+                keyPressed = Console.ReadKey(true).Key;
                 if (keyPressed == UP)
                     optionsMenu.cursorUp();
                 if (keyPressed == DOWN)

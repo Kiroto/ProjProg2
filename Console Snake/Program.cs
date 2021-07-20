@@ -69,10 +69,15 @@ namespace Console_Snake
                     }
                     else if (Board[y, x] == FruitNumber)
                     {
+                        Console.ForegroundColor = (ConsoleColor)rnd.Next(0, 16);
                         Console.Write(fruitChar);
+                        Console.ForegroundColor = ConsoleColor.Black;
                     } else
                     {
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.Write(snakeChar);
+                        Console.ForegroundColor = ConsoleColor.White;
+
                     }
                 }
         }
