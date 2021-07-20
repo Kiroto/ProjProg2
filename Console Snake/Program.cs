@@ -5,106 +5,154 @@ namespace Console_Snake
 {
     public class Snake
     {
-        int Height = 20;
-        int Width = 30;
+        const int BoardHeight = 20;
+        const int BoardWidth = 30;
+        const int InitialSnakeSize = 3;
+        const int FruitNumber = -1;
+        const int InitialX = BoardWidth / 2;
+        const int InitialY = BoardHeight / 2;
 
-        int[] X = new int[50];
-        int[] Y = new int[50];
-
-        int fruitX;
-        int fruitY;
-
-        int parts = 3;
-
-        ConsoleKeyInfo keyInfo = new ConsoleKeyInfo();
-        char key = 'W';
+        const char snakeChar = 'O';
+        const char fruitChar = '@';
+        const char wallChar = '#';
+        const char emptyChar = ' ';
 
         Random rnd = new Random();
 
+        int[,] Board = new int[BoardHeight, BoardWidth];
+        int SnakeSize = InitialSnakeSize;
+        int xpos = InitialX;
+        int ypos = InitialY;
+        int direction = 0;
+
         public Snake()
         {
-            X[0] = 5;
-            Y[0] = 5;
+            WriteWalls();
             Console.CursorVisible = false;
-            fruitX = rnd.Next(2, (Width - 2));
-            fruitY = rnd.Next(2, (Height - 2));
+            Board[ypos, xpos] = SnakeSize;
+            SetNextFruit();
+        }
+
+        public void SetNextFruit()
+        {
+            Board[rnd.Next(BoardHeight), rnd.Next(BoardWidth)] = FruitNumber;
+        }
+
+        public void WriteWalls()
+        {
+            Console.Clear();
+            for(int x = 0; x <= BoardWidth; x++)
+            {
+                Console.SetCursorPosition(x,0);
+                Console.Write(wallChar);
+                Console.SetCursorPosition(x, BoardHeight+1);
+                Console.Write(wallChar);
+            }
+            for (int y = 0; y <= BoardHeight; y++)
+            {
+                Console.SetCursorPosition(0, y);
+                Console.Write(wallChar);
+                Console.SetCursorPosition(BoardWidth + 1, y);
+                Console.Write(wallChar);
+            }
         }
 
         public void WriteBoard()
         {
-            Console.Clear();
-            for (int i = 1; i <= (Width + 2); i++)
-            {
-                Console.SetCursorPosition(i, 1);
-                Console.Write("-");
-            }
-            for (int i = 1; i <= (Width + 2); i++)
-            {
-                Console.SetCursorPosition(i, (Height + 2));
-                Console.Write("-");
-            }
-            for (int i = 1; i <= (Height + 1); i++)
-            {
-                Console.SetCursorPosition(1, i);
-                Console.Write("|");
-            }
-            for (int i = 1; i <= (Height + 1); i++)
-            {
-                Console.SetCursorPosition((Width + 2), i);
-                Console.Write("|");
-            }
+            for (int y = 0; y < BoardHeight; y++)
+                for (int x = 0; x < BoardWidth; x++)
+                {
+                    Console.SetCursorPosition(x + 1, y + 1);
+                    if (Board[y,x] == 0)
+                    {
+                        Console.Write(emptyChar);
+                    }
+                    else if (Board[y, x] == FruitNumber)
+                    {
+                        Console.Write(fruitChar);
+                    } else
+                    {
+                        Console.Write(snakeChar);
+                    }
+                }
         }
+        
+        private bool InBounds()
+        {
+            return InBounds(ypos, xpos);
+        }
+
+        private bool InBounds(int y, int x)
+        {
+            return y >= 0 && y < BoardHeight && x >= 0 && x < BoardWidth;
+        }
+
         public void Input()
         {
-            if (Console.KeyAvailable)
+            if (Console.KeyAvailable && InBounds())
             {
-                keyInfo = Console.ReadKey(true);
-                key = keyInfo.KeyChar;
+                char key = Console.ReadKey(true).KeyChar;
+                switch (key)
+                {
+                    case 'w':
+                        if (direction != 2)
+                            direction = 0;
+                        break;
+                    case 's':
+                        if (direction != 0)
+                            direction = 2;
+                        break;
+                    case 'd':
+                        if (direction != 3)
+                            direction = 1;
+                        break;
+                    case 'a':
+                        if (direction != 1)
+                            direction = 3;
+                        break;
+                }
+                
             }
-        }
-        public void WritePoint(int x, int y)
-        {
-            Console.SetCursorPosition(x, y);
-            Console.Write("#");
         }
 
         public void Logic()
         {
-            if (X[0] == fruitX)
-            {
-                if (Y[0] == fruitY)
+            for (int y = 0; y < BoardHeight; y++)
+                for (int x = 0; x < BoardWidth; x++)
                 {
-                    parts++;
-                    fruitX = rnd.Next(2, (Width - 2));
-                    fruitY = rnd.Next(2, (Height - 2));
+                    if (Board[y, x] > 0)
+                    {
+                        Board[y, x]--;
+                    }
                 }
-            }
-            for (int i = parts; i > 1; i--)
-            {
-                X[i - 1] = X[i - 2];
-                Y[i - 1] = Y[i - 2];
-            }
-            switch (key)
-            {
-                case 'w':
-                    Y[0]--;
-                    break;
-                case 's':
-                    Y[0]++;
-                    break;
-                case 'd':
-                    X[0]++;
-                    break;
-                case 'a':
-                    X[0]--;
-                    break;
-            }
-            for (int i = 0; i <= (parts - 1); i++)
-            {
-                WritePoint(X[i], Y[i]);
-                WritePoint(fruitX, fruitY);
-            }
             Thread.Sleep(100);
+
+            switch (direction)
+            {
+                case 0: ypos--; break;
+                case 2: ypos++; break;
+                case 1: xpos++; break;
+                case 3: xpos--; break;
+            }
+            
+
+            if (!InBounds())
+            {
+                return;
+                // Lose: Wall
+            }
+            else if (Board[ypos, xpos] == FruitNumber)
+            {
+                Board[ypos, xpos] = 0;
+                SnakeSize++;
+                SetNextFruit();
+            }
+            if (Board[ypos, xpos] == 0)
+                Board[ypos, xpos] = SnakeSize;
+            else
+            {
+                // Lose: Tail
+            }
         }
         static void Main(string[] args)
         {
@@ -115,7 +163,6 @@ namespace Console_Snake
                 snake.Input();
                 snake.Logic();
             }
-            Console.ReadKey();
         }
     }
 }

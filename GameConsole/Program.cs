@@ -18,7 +18,6 @@ namespace GameConsole
 
             BoxBounds optionsBounds = new BoxBounds(20, options.Length);
             ConsoleHelpers.centerBoxBound(optionsBounds);
-
             switch(ConsoleHelpers.optionsWindow(options, optionsBounds))
             {
                 case 0:
@@ -38,9 +37,6 @@ namespace GameConsole
                         snake.Input();
                         snake.Logic();
                     }
-                    Console.ReadKey();
-
-
             }
         }
     }
