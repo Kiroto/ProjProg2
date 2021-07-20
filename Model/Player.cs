@@ -4,8 +4,9 @@ using System.Text;
 
 namespace Model
 {
-    class Player
+    public class Player
     {
+        public string name = "";
         public char symbol = 'D';
 
         public Player(char newSymbol)

@@ -77,7 +77,7 @@ namespace Model
                 return getPlayer(table.get(1, 1));
             }
 
-            return turns >= 9 ? 3 : 0;
+            return (turns >= 9) ? 3 : 0;
         }
 
         private int getPlayer(char symbol)

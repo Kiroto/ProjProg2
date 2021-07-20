@@ -115,7 +115,12 @@ namespace Console_Snake
             }
         }
 
-        public void Logic()
+        public int GetScore()
+        {
+            return SnakeSize - 3;
+        }
+
+        public bool Logic()
         {
             for (int y = 0; y < BoardHeight; y++)
                 for (int x = 0; x < BoardWidth; x++)
@@ -138,8 +143,7 @@ namespace Console_Snake
 
             if (!InBounds())
             {
-                return;
-                // Lose: Wall
+                return true;
             }
             else if (Board[ypos, xpos] == FruitNumber)
             {
@@ -151,8 +155,9 @@ namespace Console_Snake
                 Board[ypos, xpos] = SnakeSize;
             else
             {
-                // Lose: Tail
+                return true;
             }
+            return false;
         }
         static void Main(string[] args)
         {
